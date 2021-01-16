@@ -27,9 +27,35 @@ namespace Kutuphane21
             lblID.Text = kullanici.ID;
             lblKullaniciAdi.Text = kullanici.KullaniciAdi;
             lblParola.Text = kullanici.Parola;
-            foreach (var item in kullanici.OduncAlinanKitaplar)
+            DataGuncelle();
+        }
+
+        private void DataGuncelle()
+        {
+            dgvOduncAlinanKitaplar.DataSource = null;
+            dgvOduncAlinanKitaplar.DataSource = kullanici.OduncAlinanKitaplar;
+            dgvOduncAlinanKitaplar.Columns[0].Visible = false;
+        }
+
+        private void dgvOduncAlinanKitaplar_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvOduncAlinanKitaplar.SelectedRows.Count > 0)
             {
-                dgvOduncAlinanKitaplar.Rows.Add(item.Key.Ad,item.Value);
+                DataGridViewRow satir = dgvOduncAlinanKitaplar.SelectedRows[0];
+                DateTime alinmaTarihi = (DateTime)satir.Cells[6].Value;
+                DateTime teslimTarihi = alinmaTarihi.AddDays(15);
+                dtpTeslimTarihi.Value = teslimTarihi;
+            }
+        }
+
+        private void btnKitapTeslimEt_Click(object sender, EventArgs e)
+        {
+            if (dgvOduncAlinanKitaplar.SelectedRows.Count > 0)
+            {
+                DataGridViewRow satir = dgvOduncAlinanKitaplar.SelectedRows[0];
+                kutuphaney.KitapTeslimEt((Kitap)satir.DataBoundItem);
+                kullanici.OduncAlinanKitaplar.Remove((Kitap)satir.DataBoundItem);
+                DataGuncelle();
             }
         }
     }

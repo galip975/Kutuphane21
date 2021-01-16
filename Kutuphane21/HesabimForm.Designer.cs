@@ -40,8 +40,9 @@ namespace Kutuphane21
             this.dgvOduncAlinanKitaplar = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnKitapTeslimEt = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpTeslimTarihi = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOduncAlinanKitaplar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -124,9 +125,6 @@ namespace Kutuphane21
             this.dgvOduncAlinanKitaplar.AllowUserToDeleteRows = false;
             this.dgvOduncAlinanKitaplar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOduncAlinanKitaplar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOduncAlinanKitaplar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
             this.dgvOduncAlinanKitaplar.Location = new System.Drawing.Point(336, 28);
             this.dgvOduncAlinanKitaplar.Name = "dgvOduncAlinanKitaplar";
             this.dgvOduncAlinanKitaplar.ReadOnly = true;
@@ -134,6 +132,7 @@ namespace Kutuphane21
             this.dgvOduncAlinanKitaplar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOduncAlinanKitaplar.Size = new System.Drawing.Size(410, 182);
             this.dgvOduncAlinanKitaplar.TabIndex = 1;
+            this.dgvOduncAlinanKitaplar.SelectionChanged += new System.EventHandler(this.dgvOduncAlinanKitaplar_SelectionChanged);
             // 
             // label9
             // 
@@ -161,23 +160,40 @@ namespace Kutuphane21
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Kullanici Bilgileri";
             // 
-            // Column1
+            // btnKitapTeslimEt
             // 
-            this.Column1.HeaderText = "Kitaplar";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.btnKitapTeslimEt.Location = new System.Drawing.Point(636, 216);
+            this.btnKitapTeslimEt.Name = "btnKitapTeslimEt";
+            this.btnKitapTeslimEt.Size = new System.Drawing.Size(106, 23);
+            this.btnKitapTeslimEt.TabIndex = 3;
+            this.btnKitapTeslimEt.Text = "Kitap Teslim Et";
+            this.btnKitapTeslimEt.UseVisualStyleBackColor = true;
+            this.btnKitapTeslimEt.Click += new System.EventHandler(this.btnKitapTeslimEt_Click);
             // 
-            // Column2
+            // label2
             // 
-            this.Column2.HeaderText = "Alinma Tarihi";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(333, 221);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Son Teslim Tarihi:";
+            // 
+            // dtpTeslimTarihi
+            // 
+            this.dtpTeslimTarihi.Location = new System.Drawing.Point(430, 219);
+            this.dtpTeslimTarihi.Name = "dtpTeslimTarihi";
+            this.dtpTeslimTarihi.Size = new System.Drawing.Size(200, 20);
+            this.dtpTeslimTarihi.TabIndex = 6;
             // 
             // HesabimForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 225);
+            this.ClientSize = new System.Drawing.Size(758, 278);
+            this.Controls.Add(this.dtpTeslimTarihi);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnKitapTeslimEt);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvOduncAlinanKitaplar);
             this.Controls.Add(this.label9);
@@ -204,7 +220,8 @@ namespace Kutuphane21
         private System.Windows.Forms.DataGridView dgvOduncAlinanKitaplar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button btnKitapTeslimEt;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpTeslimTarihi;
     }
 }

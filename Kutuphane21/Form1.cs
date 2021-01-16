@@ -1,9 +1,11 @@
 ﻿using Kutuphane21.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,8 @@ namespace Kutuphane21
         public Form1()
         {
             InitializeComponent();
-            ky.KayitOl("admin", "admin", "admin");
+            string json = File.ReadAllText("veriKullanici.json");
+            ky = JsonConvert.DeserializeObject<KullaniciYoneticisi>(json);
         }
 
         private void llblKayitOl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -38,6 +41,12 @@ namespace Kutuphane21
                 KutuphaneForm frm = new KutuphaneForm(ky, girisYapan);
                 frm.ShowDialog();
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string json = JsonConvert.SerializeObject(ky);
+            File.WriteAllText("veriKullanici.json", json);
         }
     }
 }

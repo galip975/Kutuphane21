@@ -9,15 +9,21 @@ namespace Kutuphane21.Data
     public class KutuphaneYoneticisi
     {
         public List<Kitap> Kitaplar { get; set; } = new List<Kitap>();
-        public void KitapEkle(string ad,int adet,int basimYili,string tarif,KitapTur tur,string yazar)
+        public void KitapEkle(string ad,int basimYili,string tarif,KitapTur tur,string yazar,int adet)
         {
-            Kitap kitap = new Kitap();
-            kitap.Ad = ad;
-            kitap.Adet = adet;
-            kitap.BasimYili = basimYili;
-            kitap.Tarifi = tarif;
-            kitap.Tur = tur;
-            kitap.Yazar = yazar;
+            for (int i = 0; i < adet; i++)
+            {
+                Kitap kitap = new Kitap();
+                kitap.Ad = ad;
+                kitap.BasimYili = basimYili;
+                kitap.Tarifi = tarif;
+                kitap.Tur = tur;
+                kitap.Yazar = yazar;
+                Kitaplar.Add(kitap);
+            }
+        }
+        public void KitapTeslimEt(Kitap kitap)
+        {
             Kitaplar.Add(kitap);
         }
     }

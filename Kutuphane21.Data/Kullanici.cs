@@ -14,7 +14,7 @@ namespace Kutuphane21.Data
         }
         public string ID { get; }
         public string Name { get; set; }
-        public Dictionary<Kitap, DateTime> OduncAlinanKitaplar { get; set; } = new Dictionary<Kitap, DateTime>();
+        public List<Kitap> OduncAlinanKitaplar { get; set; } = new List<Kitap>();
         public string KullaniciAdi { get; set; }
         public string Parola { get; set; }
     }

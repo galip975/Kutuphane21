@@ -38,7 +38,7 @@ namespace Kutuphane21
             string tarif = txtKitapTarif.Text;
             KitapTur tur = (KitapTur)cboTur.SelectedItem;
             string yazar = txtKitapYazar.Text;
-            kutuphaney.KitapEkle(kitapAd, adet, basimYili, tarif, tur, yazar);
+            kutuphaney.KitapEkle(kitapAd,basimYili, tarif, tur, yazar,adet);
             Close();
         }
     }
